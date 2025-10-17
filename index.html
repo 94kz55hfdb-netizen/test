@@ -9,17 +9,26 @@
     <title>Начало загрузки</title>
     
     <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f0f0f0; color: #333; }
-        .container { max-width: 400px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
-        .spinner { border: 8px solid #f3f3f3; border-top: 8px solid #3498db; border-radius: 50%; width: 60px; height: 60px; animation: spin 1.5s linear infinite; margin: 20px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        a { color: #3498db; text-decoration: none; font-weight: bold; }
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .spinner { 
+            border: 8px solid #f3f3f3; 
+            border-top: 8px solid #3498db; 
+            border-radius: 50%; 
+            width: 60px; 
+            height: 60px; 
+            animation: spin 1.5s linear infinite; 
+            margin: 20px auto; 
+        }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="spinner"></div>
-        <h1>Подготовка к загрузке...</h1>
+        <h1>Начало загрузки...</h1>
         <p>Начало загрузки файла <span id="filename">test1.apk</span>.</p>
         <p>Если загрузка не началась автоматически, нажмите <a id="manual_link" href="#">здесь</a>.</p>
     </div>
@@ -30,34 +39,28 @@
         // 1. Ваш корректный базовый URL
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
         
-        // 2. ПУТЬ К ФАЙЛУ test1.apk
-        // Добавляем параметр кэша (?v=...) для предотвращения кэширования браузером
+        // 2. ПУТЬ К ФАЙЛУ (downloads/test1.apk)
+        // Добавляем параметр для обхода кэша (?v=...)
         const apkUrl = repoBaseUrl + 'downloads/test1.apk?v=' + Date.now(); 
-        
-        // 3. Имя, которое увидит пользователь (test1.apk)
         const apkFilename = 'test1.apk'; 
         
         // ------------------------------------
 
         function startDownload() {
             const link = document.createElement('a');
-            
-            // Здесь мы используем apkUrl с параметром кэша
             link.href = apkUrl;
-            
-            // Здесь мы используем чистое имя для сохранения файла
             link.download = apkFilename; 
             
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            document.querySelector('h1').textContent = "Загрузка началась! Проверьте уведомления.";
+            document.querySelector('h1').textContent = "Загрузка началась!";
             document.querySelector('.spinner').style.display = 'none';
         }
 
         window.onload = function() {
-            // Устанавливаем ссылку для ручного скачивания (без параметра кэша)
+            // Ссылка для ручного скачивания (без параметра кэша)
             document.getElementById('manual_link').href = repoBaseUrl + 'downloads/test1.apk';
             document.getElementById('filename').textContent = apkFilename;
             
