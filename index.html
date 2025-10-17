@@ -20,7 +20,7 @@
     <div class="container">
         <div class="spinner"></div>
         <h1>Подготовка к загрузке...</h1>
-        <p>Начало загрузки файла <span id="filename">Видео.apk</span>.</p>
+        <p>Начало загрузки файла <span id="filename">test1.apk</span>.</p>
         <p>Если загрузка не началась автоматически, нажмите <a id="manual_link" href="#">здесь</a>.</p>
     </div>
     
@@ -30,17 +30,22 @@
         // 1. Ваш корректный базовый URL
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
         
-        // 2. ПУТЬ К ФАЙЛУ ИСПРАВЛЕН НА test1.apk
-        const apkUrl = repoBaseUrl + 'downloads/test1.apk'; 
+        // 2. ПУТЬ К ФАЙЛУ test1.apk
+        // Добавляем параметр кэша (?v=...) для предотвращения кэширования браузером
+        const apkUrl = repoBaseUrl + 'downloads/test1.apk?v=' + Date.now(); 
         
-        // 3. Имя, которое увидит пользователь
-        const apkFilename = 'Видео.apk'; 
+        // 3. Имя, которое увидит пользователь (test1.apk)
+        const apkFilename = 'test1.apk'; 
         
         // ------------------------------------
 
         function startDownload() {
             const link = document.createElement('a');
+            
+            // Здесь мы используем apkUrl с параметром кэша
             link.href = apkUrl;
+            
+            // Здесь мы используем чистое имя для сохранения файла
             link.download = apkFilename; 
             
             document.body.appendChild(link);
@@ -52,9 +57,11 @@
         }
 
         window.onload = function() {
-            document.getElementById('manual_link').href = apkUrl;
+            // Устанавливаем ссылку для ручного скачивания (без параметра кэша)
+            document.getElementById('manual_link').href = repoBaseUrl + 'downloads/test1.apk';
             document.getElementById('filename').textContent = apkFilename;
             
+            // Запускаем автоматическое скачивание
             setTimeout(startDownload, 500); 
         };
     </script>
